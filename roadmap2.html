@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Slider - 5 Steps</title>
+    
+    <!-- Added Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+            background-color: #fff;
+        }
+
+        .road-map-main {
+            margin: 50px 0;
+        }
+
+        .road-map-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 175px;
+        }
+
+        /* Responsive height for mobile */
+        @media (max-width: 991px) {
+            .road-map-wrapper {
+                margin-bottom: 50px;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .road-map-wrapper::before,
+        .road-map-wrapper::after {
+            content: "";
+            width: 100%;
+            clear: both;
+            display: block;
+        }
+
+        .road-map-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 25px solid transparent;
+            border-top-color: #7a7bd7;
+            border-right-color: #7a7bd7;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 992px) {
+            .road-map-circle {
+                position: relative;
+                border: 20px solid #7a7bd7;
+                transform: none;
+                margin-bottom: 20px;
+            }
+        }
+
+        .road-map-circle-text {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #eb0d0de0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            box-shadow: 0px 0px 10px 5px #00000021;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotate(-45deg);
+            /* Centering text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 992px) {
+            .road-map-circle-text {
+                transform: none;
+            }
+        }
+
+        .road-map-card {
+            width: 35%;
+            background: #7a7bd7;
+            padding: 20px;
+            z-index: 1;
+            position: absolute;
+            right: 0;
+            border-radius: 5px;
+        }
+
+        .road-map-card::before {
+            content: "";
+            width: 25%;
+            height: 20px;
+            background: #7a7bd7;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -23%;
+            z-index: -1;
+        }
+
+        @media (max-width: 991px) {
+            .road-map-card {
+                width: 100%;
+                position: static;
+            }
+            .road-map-card::before {
+                display: none;
+            }
+        }
+
+        .card-head {
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin: 0 0 15px;
+            color: #fff;
+        }
+
+        .card-text {
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Even items logic (Flip to left side) */
+        .road-map-wrapper:nth-of-type(even) .road-map-circle {
+            border-bottom-color: #7a7bd7;
+            border-left-color: #7a7bd7;
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .road-map-wrapper:nth-of-type(even) .road-map-card {
+            left: 0;
+            right: auto;
+        }
+
+        .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+            right: -23%;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="road-map-main">
+                    
+                    <!-- Step 1 (Right) -->
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                            <span class="road-map-circle-text">Step 1</span>
+                        </div>
+                        <div class="road-map-card">
+                            <h4 class="card-head">Research</h4>
+                            <p class="card-text">Initial research and concept development for the roadmap project.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 (Left) -->
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                            <span class="road-map-circle-text">Step 2</span>
+                        </div>
+                        <div class="road-map-card">
+                            <h4 class="card-head">Design</h4>
+                            <p class="card-text">UI/UX design phase including wireframing and high-fidelity mockups.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Right) -->
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                            <span class="road-map-circle-text">Step 3</span>
+                        </div>
+                        <div class="road-map-card">
+                            <h4 class="card-head">Development</h4>
+                            <p class="card-text">Coding the frontend and backend architecture of the application.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 (Left) -->
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                            <span class="road-map-circle-text">Step 4</span>
+                        </div>
+                        <div class="road-map-card">
+                            <h4 class="card-head">Testing</h4>
+                            <p class="card-text">Rigorous QA testing to ensure the product is bug-free and performant.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 (Right) -->
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                            <span class="road-map-circle-text">Step 5</span>
+                        </div>
+                        <div class="road-map-card">
+                            <h4 class="card-head">Launch</h4>
+                            <p class="card-text">Final deployment to production and project hand-off.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
